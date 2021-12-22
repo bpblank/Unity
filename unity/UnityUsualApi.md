@@ -12,7 +12,12 @@
 
   > 帧： 影像动画中最小的单位，一帧就是一幅静止的画面，fps：帧数，一秒内传输图片的帧数。
 
+#### FixedUpdate方法
 
++ 当物体的移动为速度*Time.deltaTime的时候，物体是按照时间来进行移动的。
++ 而Update函数在调用的时候是每一帧调用一次，而根据电脑的运行情况，每一帧的时间都不一样。
++ FixedUpdate 函数是真实时间，在固定的时间间隔内执行，不受游戏帧率影响。
++ 修改FixedUpdate 在**Edit** - **Project Setting** - **time** 找到 **Fixed timestep**修改。在设置物体刚体时，最好将代码逻辑放入FixedUpdate方法中。
 
 
 
@@ -63,7 +68,10 @@ public void Translate (Vector3 translation, Transform relativeTo);
 //相对于 relativeTo 的本地坐标系应用移动。 如果 relativeTo 为 null，则相对于世界坐标系应用移动。
 ```
 
+#### transfrom.forward
 
++ 自动对物体旋转值算出前进方向向量的变量。
++ Vector3.forward 表示（0，0，1）
 
 
 
@@ -91,3 +99,75 @@ public void Translate (Vector3 translation, Transform relativeTo);
 #### GUID
 
 + guid是meta中最最最重要的数据。这个guid代表了这个文件，无论这个文件是什么类型（甚至是文件夹）。换句话说，通过GUID就可以找到工程中的这个文件，无论它在项目的什么位置。
+
+20211222
+
+------
+
+### Sprite Renderer
+
++ 2D图形渲染精灵
+
+#### 变量
+
+1. sprite ： 渲染的对象
+2. maskInteraction： 指定精灵如何与遮罩交互
+3. tileMode： 精灵渲染器当前的平铺模式
+4. Material：返回该对象的所有实例化材质。
+5. sortingOrder：设置排序图层中渲染器的顺序
+
+
+
+### Component
+
+#### GetComponent(type name)
+
+1. 如果游戏对象有附加type类型的组件，则返回，如果没有则为空。
+
+
+
+
+
+### Collider
+
+所有碰撞体的基类
+
+
+
+
+
+
+
+### Rigidbody 2D 组件
+
+1. Gravity Scale 控制物体的重力
+2. Constraints 控制物体的偏移方向 x y z轴。
+
+
+
+
+
+### Object 类
+
+#### Instantiate
+
++ 克隆 `original` 对象并返回克隆对象。返回**Object** 实例化的克隆对象。
+
++ 此函数会通过与编辑器中的复制命令类似的方式创建对象的副本。如果要克隆 [GameObject](https://docs.unity3d.com/cn/current/ScriptReference/GameObject.html)，则可以指定其位置和旋转（否则，这些默认为原始 GameObject 的位置和旋转）。如果要克隆 [Component](https://docs.unity3d.com/cn/current/ScriptReference/Component.html)，则也会克隆它附加到的 GameObject（同样可指定可选的位置和旋转）。
+
+  克隆 [GameObject](https://docs.unity3d.com/cn/current/ScriptReference/GameObject.html) 或 [Component](https://docs.unity3d.com/cn/current/ScriptReference/Component.html) 时，也将克隆所有子对象和组件，它们的属性设置与原始对象相同。
+
+
+
+#### Quaternion
+
++ 四元数
+
+Quaternion.Euler（x,y,z） : 将欧拉角转换成四元数。
+
+
+
+
+
+
+
