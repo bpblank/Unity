@@ -120,3 +120,23 @@ OnApplicationQuit：应用程序退出时被调用。
 + 将碰撞器添加到墙体并将预制体渲染关闭。
 
 > tips： 在给物体添加预制体属性的时候，需要先添加变量，然后再将预制体进行关联。
+
+### Camera中看不见物体场景
+
+**Culling Mask、Layer、z坐标设置错误**
+
+------
+
+1、解决Camera下Culling Mask设置错误
+
+检查一下Culling Mask是否为“Everything”，有时我们为了创作需要，会更改Culling Mask，如果你的Culling Mask选项为“Mixed”，那么很有可能是Culling Mask设置错误 设置成everything
+
+2、解决Layer设置错误
+
+设置Layer时千千万万要注意，层次关系一定不要搞错，检查一下有没有被背景或其他精灵挡住，再检查Layer视图里有没有开启显示该Layer
+
+没有必要的话最好设置成everything
+
+3、解决z坐标设置错误
+
+这是2D游戏开发中最最最最最容易忽略的一个错误，因为大多数游戏角色的Transform都是一直在变化的，因此很多人都会忽略掉Transform里的坐标，更别说一个在2D游戏开发中没有多大用处的z坐标了。

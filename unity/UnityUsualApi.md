@@ -19,6 +19,16 @@
 + FixedUpdate 函数是真实时间，在固定的时间间隔内执行，不受游戏帧率影响。
 + 修改FixedUpdate 在**Edit** - **Project Setting** - **time** 找到 **Fixed timestep**修改。在设置物体刚体时，最好将代码逻辑放入FixedUpdate方法中。
 
+#### Invoke
+
+```c#
+public void Invoke (string methodName, float time);
+```
+
++ 在 `time` 秒后调用 `methodName` 方法。
+
++ 如果时间设置为 0，则在下一个更新周期调用方法。在这种情况下，直接调用函数会更好。
+
 
 
 
@@ -209,6 +219,14 @@ public void Translate (Vector3 translation, Transform relativeTo);
 
 Quaternion.Euler（x,y,z） : 将欧拉角转换成四元数。
 
+#### [Quaternion](https://docs.unity3d.com/cn/current/ScriptReference/Quaternion.html).identity
+
++ 单位旋转（只读）。
+
+  该四元数对应于“no rotation”- 对象与世界轴或父轴完全对齐。
+
+  
+
 
 
 
@@ -230,5 +248,24 @@ Quaternion.Euler（x,y,z） : 将欧拉角转换成四元数。
 
 
 
+### Debug
 
+此类包含在开发游戏时可使调试变得更轻松的方法。
 
+| [Assert](https://docs.unity3d.com/cn/current/ScriptReference/Debug.Assert.html) | 断言某个条件，并在失败时将错误消息记录到 Unity 控制台。      |
+| ------------------------------------------------------------ | :----------------------------------------------------------- |
+| [AssertFormat](https://docs.unity3d.com/cn/current/ScriptReference/Debug.AssertFormat.html) | 断言某个条件，并在失败时将格式化的错误消息记录到 Unity 控制台。 |
+| [Break](https://docs.unity3d.com/cn/current/ScriptReference/Debug.Break.html) | 暂停该 Editor。                                              |
+| [ClearDeveloperConsole](https://docs.unity3d.com/cn/current/ScriptReference/Debug.ClearDeveloperConsole.html) | 将错误从开发者控制台中清除。                                 |
+| [DrawLine](https://docs.unity3d.com/cn/current/ScriptReference/Debug.DrawLine.html) | 在指定的起始点与结束点之间绘制一条直线。                     |
+| [DrawRay](https://docs.unity3d.com/cn/current/ScriptReference/Debug.DrawRay.html) | 在世界坐标中绘制一条从 start 到 start + dir 的直线。         |
+| [ExtractStackTraceNoAlloc](https://docs.unity3d.com/cn/current/ScriptReference/Debug.ExtractStackTraceNoAlloc.html) | Populate an unmanaged buffer with the current managed call stack as a sequence of UTF-8 bytes, without allocating GC memory. Returns the number of bytes written into the buffer. |
+| **[Log](https://docs.unity3d.com/cn/current/ScriptReference/Debug.Log.html)** | **将消息记录到 Unity 控制台。**                              |
+| [LogAssertion](https://docs.unity3d.com/cn/current/ScriptReference/Debug.LogAssertion.html) | 将断言消息记录到控制台的 Debug.Log 的变体。                  |
+| [LogAssertionFormat](https://docs.unity3d.com/cn/current/ScriptReference/Debug.LogAssertionFormat.html) | 将格式化断言消息记录到 Unity 控制台。                        |
+| [LogError](https://docs.unity3d.com/cn/current/ScriptReference/Debug.LogError.html) | 将错误消息记录到控制台的 Debug.Log 的变体。                  |
+| [LogErrorFormat](https://docs.unity3d.com/cn/current/ScriptReference/Debug.LogErrorFormat.html) | 将格式化错误消息记录到 Unity 控制台。                        |
+| [LogException](https://docs.unity3d.com/cn/current/ScriptReference/Debug.LogException.html) | 将来自某个异常的错误消息记录到控制台的 Debug.Log 的变体。    |
+| [LogFormat](https://docs.unity3d.com/cn/current/ScriptReference/Debug.LogFormat.html) | 将格式化消息记录到 Unity 控制台。                            |
+| [LogWarning](https://docs.unity3d.com/cn/current/ScriptReference/Debug.LogWarning.html) | 将警告消息记录到控制台的 Debug.Log 的变体。                  |
+| [LogWarningFormat](https://docs.unity3d.com/cn/current/ScriptReference/Debug.LogWarningFormat.html) | 将格式化警告消息记录到 Unity 控制台。                        |

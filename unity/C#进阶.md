@@ -35,3 +35,29 @@ base能在子类重写父类的方法后重新调用父类的方法
 `base.method`
 
 访问父类成员只能再函数进行。
+
+
+
+### 单例模式
+
+```C#
+// 只会返回一个实例。
+private static 类名 instance;
+public static 类名 Instance{
+    get{
+        if (instance == null){
+            instance = new 类名；
+        }
+        return instance;
+    }
+}
+
+
+//如果继承了MonoBehaviour
+//那么可以写成
+public static 类名 字段名；
+private void Awake(){
+    instance = this;
+}
+```
+
