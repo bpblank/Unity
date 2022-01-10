@@ -59,5 +59,54 @@ public static 类名 字段名；
 private void Awake(){
     instance = this;
 }
+
+// 单例模板
+public class Singleton<T> : MonoBehaviour where T : Singleton<T>
+{
+    public static T Instance { get; private set; }
+
+    protected void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = (T) this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+}
 ```
 
+#### get() set() 方法
+
+```c#
+public string name;
+public string Name{
+    get(return name);
+    set(name = value);
+}
+```
+
+#### 泛型中where约束
+
+定义：在定义**泛型**的时候，我们可以使用 **where** 限制**参数**的范围。
+
+使用：在使用**泛型**的时候，你必须尊守 **where** 限制**参数**的范围，否则编译不会通过。
+
++ 用于类
+
++ ```
+  指定GenericList中的类型参数必须是Employee或者是派生于Employee
+  public class Employee{}
+  
+  public class GenericList<T> where T : Employee
+  ```
+
++ 用于方法
+
+```
+public bool MyMethod<T>(T t) where T : IMyInterface { }
+```
